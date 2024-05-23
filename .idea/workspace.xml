@@ -4,28 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="prve tablice baze:User,Employee,SchoolDirector">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/AktivController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/StatusPlanController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Aktiv.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/EmployeeSubject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/StatusPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/YearlyPlan.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="napravljen api za dohvat liste zaposlenika">
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/AktivDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeWithAktivDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/AktivRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeSubjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/StatusPlanRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SubjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/YearlyPlanRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/EmployeeSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/EmployeeSubject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -121,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716416513765</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="napravljen api za dohvat liste zaposlenika">
+      <created>1716482590169</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716482590169</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,7 +142,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="prve postavke aplikacije" />
     <MESSAGE value="prve tablice baze:User,Employee,SchoolDirector" />
-    <option name="LAST_COMMIT_MESSAGE" value="prve tablice baze:User,Employee,SchoolDirector" />
+    <MESSAGE value="napravljen api za dohvat liste zaposlenika" />
+    <option name="LAST_COMMIT_MESSAGE" value="napravljen api za dohvat liste zaposlenika" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -27,12 +27,5 @@ public class Employee extends User{
     @JoinColumn(name = "id_aktiv")
     private Aktiv aktiv;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_status_plan")
-    private StatusPlan statusPlan;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_yearly_plan")
-    private YearlyPlan yearlyPlan;
 
 }

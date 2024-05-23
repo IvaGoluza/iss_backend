@@ -1,15 +1,17 @@
 package com.infsus.ISS.controller;
 
+import com.infsus.ISS.model.DTO.EmployeeDTO;
 import com.infsus.ISS.model.DTO.EmployeeResponseDTO;
+import com.infsus.ISS.model.DTO.EmployeeUpdateDTO;
+import com.infsus.ISS.model.DTO.EmployeeWithAktivDTO;
 import com.infsus.ISS.service.EmployeeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/employee", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,8 +23,37 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<EmployeeResponseDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeResponseDTO createdEmployee = employeeService.createEmployee(employeeDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<EmployeeResponseDTO>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
+
+    @GetMapping("/getEmployee/{id}")
+    public ResponseEntity<EmployeeWithAktivDTO> getEmployeeById(@PathVariable("id") Long employeeId) {
+        Optional<EmployeeWithAktivDTO> employeeOptional = employeeService.getEmployeeWithAktivById(employeeId);
+        return employeeOptional.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Void> updateEmployee(@RequestBody EmployeeUpdateDTO employeeUpdateDTO) {
+        employeeService.updateEmployee(employeeUpdateDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable("id") Long employeeId) {
+        boolean isRemoved = employeeService.deleteEmployee(employeeId);
+        if (!isRemoved) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

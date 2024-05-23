@@ -25,4 +25,6 @@ public class EmployeeResponseDTO {
         private Date dateStart;
 
         private String position;
+
+        private String aktivName;
 }

@@ -29,4 +29,16 @@ public class EmployeeSubject {
     @JoinColumn(name = "id_subject")
     private Subject subject;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_status_plan")
+    private StatusPlan statusPlan;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_yearly_plan")
+    private YearlyPlan yearlyPlan;
+
+    public EmployeeSubject(Employee employee, Subject subject) {
+            this.employee = employee;
+            this.subject = subject;
+    }
 }
