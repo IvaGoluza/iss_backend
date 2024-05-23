@@ -8,18 +8,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "User")
+@MappedSuperclass
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUser")
-    private int idUser;
+    @Column(name = "id_user")
+    private Long idUser;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -30,13 +28,11 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "dateEnd")
+    @Column(name = "date_end")
     private Date dateEnd;
 
-    @Column(name = "dateStart", nullable = false)
+    @Column(name = "date_start", nullable = false)
     private Date dateStart;
 
-    @Column(name = "idSchool", nullable = false)
-    private int idSchool;
 
 }
