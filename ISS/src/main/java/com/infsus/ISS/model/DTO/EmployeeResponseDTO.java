@@ -13,18 +13,11 @@ import java.util.Date;
 @AllArgsConstructor
 public class EmployeeResponseDTO {
         private Long id;
-
         private String name;
-
         private String email;
-
         private String password;
-
         private Date dateEnd;
-
         private Date dateStart;
-
         private String position;
-
         private String aktivName;
 }

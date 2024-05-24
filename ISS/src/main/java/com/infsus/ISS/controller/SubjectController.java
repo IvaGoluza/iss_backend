@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/subject", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "http://localhost:3000")
-public class Subject {
+public class SubjectController {
 }

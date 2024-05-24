@@ -55,10 +55,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findById(employeeUpdateDTO.getIdUser())
                 .orElseThrow(() -> new IllegalArgumentException("Employee not found"));
 
-        // Copy properties from DTO to entity, excluding ID fields
         BeanUtils.copyProperties(employeeUpdateDTO, employee);
 
-        // Set the Aktiv, StatusPlan, and YearlyPlan if they are provided
         if (employeeUpdateDTO.getIdAktiv() != null) {
             Aktiv aktiv = aktivRepository.findById(employeeUpdateDTO.getIdAktiv())
                     .orElseThrow(() -> new IllegalArgumentException("Aktiv not found"));
@@ -86,6 +84,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee savedEmployee = employeeRepository.save(employee);
 
         return modelMapper.map(savedEmployee, EmployeeResponseDTO.class);
+    }
+
+    public List<SubjectDetailResponseDTO> getSubjectsByEmployeeId(Long employeeId) {
+        List<Subject> subjects = subjectRepository.findAllByEmployeeId(employeeId);
+        List<SubjectDetailResponseDTO> listToSend = new ArrayList<>();
+        for(Subject s: subjects) {
+            SubjectDetailResponseDTO subjectDTO = modelMapper.map(s, SubjectDetailResponseDTO.class);
+            EmployeeSubject employeeSubject = employeeSubjectRepository.findByEmployeeAndSubject(employeeId, s.getIdSubject());
+            StatusPlan statusPlan = employeeSubject.getStatusPlan();
+            subjectDTO.setStatus(statusPlan.getStatus());
+            listToSend.add(subjectDTO);
+        }
+        return listToSend;
     }
 
 

@@ -24,6 +24,4 @@ public class StatusPlan {
     @Column(name = "status", nullable = false)
     private String status;
 
-    @Column(name = "approved", nullable = false)
-    private boolean approved;
 }

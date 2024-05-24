@@ -1,10 +1,7 @@
 package com.infsus.ISS.service;
 
 
-import com.infsus.ISS.model.DTO.EmployeeDTO;
-import com.infsus.ISS.model.DTO.EmployeeResponseDTO;
-import com.infsus.ISS.model.DTO.EmployeeUpdateDTO;
-import com.infsus.ISS.model.DTO.EmployeeWithAktivDTO;
+import com.infsus.ISS.model.DTO.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,4 +16,6 @@ public interface EmployeeService {
     boolean deleteEmployee(Long idUser);
 
     EmployeeResponseDTO createEmployee(EmployeeDTO employeeDTO);
+
+    List<SubjectDetailResponseDTO> getSubjectsByEmployeeId(Long employeeId);
 }

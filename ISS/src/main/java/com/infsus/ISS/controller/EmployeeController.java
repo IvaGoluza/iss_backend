@@ -1,9 +1,7 @@
 package com.infsus.ISS.controller;
 
-import com.infsus.ISS.model.DTO.EmployeeDTO;
-import com.infsus.ISS.model.DTO.EmployeeResponseDTO;
-import com.infsus.ISS.model.DTO.EmployeeUpdateDTO;
-import com.infsus.ISS.model.DTO.EmployeeWithAktivDTO;
+import com.infsus.ISS.model.DTO.*;
+import com.infsus.ISS.model.Subject;
 import com.infsus.ISS.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -54,6 +52,12 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/{id}/subjects")
+    public ResponseEntity<List<SubjectDetailResponseDTO>> getSubjectsByEmployeeId(@PathVariable Long id) {
+        List<SubjectDetailResponseDTO> subjects = employeeService.getSubjectsByEmployeeId(id);
+        return ResponseEntity.ok(subjects);
     }
 
 }

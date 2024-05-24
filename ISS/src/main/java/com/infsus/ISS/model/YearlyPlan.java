@@ -23,4 +23,7 @@ public class YearlyPlan {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "approved", nullable = false)
+    private boolean approved;
 }

@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="napravljene osnovne funkcije za dohvat, stvaranje i brisanje">
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeDTO.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="sitna popravka u create funkciji">
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/SubjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/SubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/SubjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeSubjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeSubjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SubjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SubjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -116,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716508412299</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="sitna popravka u create funkciji">
+      <created>1716509144663</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716509144663</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,7 +153,8 @@
     <MESSAGE value="prve tablice baze:User,Employee,SchoolDirector" />
     <MESSAGE value="napravljen api za dohvat liste zaposlenika" />
     <MESSAGE value="napravljene osnovne funkcije za dohvat, stvaranje i brisanje" />
-    <option name="LAST_COMMIT_MESSAGE" value="napravljene osnovne funkcije za dohvat, stvaranje i brisanje" />
+    <MESSAGE value="sitna popravka u create funkciji" />
+    <option name="LAST_COMMIT_MESSAGE" value="sitna popravka u create funkciji" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
