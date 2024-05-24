@@ -20,7 +20,4 @@ public class EmployeeDTO {
     private Date dateEnd;
     private String position;
     private Long idAktiv;
-    private Long idStatusPlan;
-    private Long idYearlyPlan;
-    private List<Long> subjects;
 }

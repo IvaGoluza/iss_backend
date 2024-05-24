@@ -83,29 +83,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new EntityNotFoundException("Aktiv not found"));
 
         employee.setAktiv(aktiv);
-
-        List<Long> subjects = employeeDTO.getSubjects();
-        Long statusPlanId = employeeDTO.getIdStatusPlan();
-        Long yearlyPlanId = employeeDTO.getIdYearlyPlan();
-
-        StatusPlan statusPlan = statusPlanRepository.getReferenceById(statusPlanId);
-        YearlyPlan yearlyPlan = yearlyPlanRepository.getReferenceById(yearlyPlanId);
-
-        List<EmployeeSubject> employeeSubjects = new ArrayList<>();
-        for (Long s : subjects) {
-            Subject subject = subjectRepository.findById(s)
-                    .orElseThrow(() -> new EntityNotFoundException("Subject with id " + s + " not found"));
-
-            EmployeeSubject employeeSubject = new EmployeeSubject();
-            employeeSubject.setEmployee(employee);
-            employeeSubject.setSubject(subject);
-            employeeSubject.setStatusPlan(statusPlan);
-            employeeSubject.setYearlyPlan(yearlyPlan);
-
-            employeeSubjects.add(employeeSubject);
-        }
         Employee savedEmployee = employeeRepository.save(employee);
-        employeeSubjectRepository.saveAll(employeeSubjects);
 
         return modelMapper.map(savedEmployee, EmployeeResponseDTO.class);
     }
