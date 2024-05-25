@@ -13,7 +13,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "school_director")
 public class SchoolDirector extends User{
-
     @Column(name = "status", nullable = false)
     private String status;
 

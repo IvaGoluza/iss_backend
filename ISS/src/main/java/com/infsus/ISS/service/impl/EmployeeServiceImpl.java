@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -22,13 +23,12 @@ import java.util.stream.Collectors;
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final AktivRepository aktivRepository;
-    private final StatusPlanRepository statusPlanRepository;
-    private final YearlyPlanRepository yearlyPlanRepository;
     private final SubjectRepository subjectRepository;
     private final EmployeeSubjectRepository employeeSubjectRepository;
     private final ModelMapper modelMapper;
     private static final int PASSWORD_LENGTH = 8;
     private static final String PASSWORD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<EmployeeResponseDTO> getAllEmployees() {
@@ -86,7 +86,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new EntityNotFoundException("Aktiv not found"));
 
         employee.setAktiv(aktiv);*/
-        employee.setPassword(randomPassword);
+        String hashedPassword = passwordEncoder.encode(randomPassword);
+        employee.setPassword(hashedPassword);
         Employee savedEmployee = employeeRepository.save(employee);
 
         return modelMapper.map(savedEmployee, EmployeeResponseDTO.class);
