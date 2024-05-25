@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -26,6 +27,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final SubjectRepository subjectRepository;
     private final EmployeeSubjectRepository employeeSubjectRepository;
     private final ModelMapper modelMapper;
+    private static final int PASSWORD_LENGTH = 8;
+    private static final String PASSWORD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
     @Override
     public List<EmployeeResponseDTO> getAllEmployees() {
         return employeeRepository.findAll().stream().sorted(Comparator.comparing(Employee::getIdUser)).map(user -> modelMapper.map(user, EmployeeResponseDTO.class)).toList();
@@ -76,25 +80,43 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeResponseDTO createEmployee(EmployeeDTO employeeDTO) {
+        String randomPassword = generateRandomPassword();
         Employee employee = modelMapper.map(employeeDTO, Employee.class);
-        Aktiv aktiv = aktivRepository.findById(employeeDTO.getIdAktiv())
+       /* Aktiv aktiv = aktivRepository.findById(employeeDTO.getIdAktiv())
                 .orElseThrow(() -> new EntityNotFoundException("Aktiv not found"));
 
-        employee.setAktiv(aktiv);
+        employee.setAktiv(aktiv);*/
+        employee.setPassword(randomPassword);
         Employee savedEmployee = employeeRepository.save(employee);
 
         return modelMapper.map(savedEmployee, EmployeeResponseDTO.class);
     }
-
+    private String generateRandomPassword() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder(PASSWORD_LENGTH);
+        for (int i = 0; i < PASSWORD_LENGTH; i++) {
+            int randomIndex = random.nextInt(PASSWORD_CHARS.length());
+            sb.append(PASSWORD_CHARS.charAt(randomIndex));
+        }
+        return sb.toString();
+    }
+    @Override
     public List<SubjectDetailResponseDTO> getSubjectsByEmployeeId(Long employeeId) {
         List<Subject> subjects = subjectRepository.findAllByEmployeeId(employeeId);
         List<SubjectDetailResponseDTO> listToSend = new ArrayList<>();
-        for(Subject s: subjects) {
-            SubjectDetailResponseDTO subjectDTO = modelMapper.map(s, SubjectDetailResponseDTO.class);
-            EmployeeSubject employeeSubject = employeeSubjectRepository.findByEmployeeAndSubject(employeeId, s.getIdSubject());
-            StatusPlan statusPlan = employeeSubject.getStatusPlan();
-            subjectDTO.setStatus(statusPlan.getStatus());
-            listToSend.add(subjectDTO);
+        for (Subject s : subjects) {
+            List<EmployeeSubject> employeeSubjects = employeeSubjectRepository.findByEmployeeAndSubject(employeeId, s.getIdSubject());
+            for (EmployeeSubject employeeSubject : employeeSubjects) {
+                SubjectDetailResponseDTO subjectDTO = modelMapper.map(s, SubjectDetailResponseDTO.class); // Create a new DTO for each EmployeeSubject
+                StatusPlan statusPlan = employeeSubject.getStatusPlan();
+                YearlyPlan yearlyPlan = employeeSubject.getYearlyPlan();
+                subjectDTO.setStatus(statusPlan != null ? statusPlan.getStatus() : null);
+                subjectDTO.setYearlyPlan(yearlyPlan != null && yearlyPlan.getName() != null ? yearlyPlan.getName() : null);
+                subjectDTO.setSubjectClass(employeeSubject.getSubjectClass());
+                subjectDTO.setNumberOfHours(employeeSubject.getNumberOfHours());
+                subjectDTO.setIdEmployeeSubject(employeeSubject.getIdEmployeeSubject());
+                listToSend.add(subjectDTO);
+            }
         }
         return listToSend;
     }

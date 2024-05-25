@@ -13,5 +13,4 @@ import lombok.Setter;
 public class SubjectResponseDTO {
     private Long idSubject;
     private String subjectName;
-    private int numberOfHours;
 }

@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="sitna popravka u create funkciji">
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/SubjectService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/SubjectServiceImpl.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="napralvjeno slanje predmeta za jendog zaposlenika">
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeSubjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeSubjectDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeSubjectUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeSubjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeSubjectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/SubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/EmployeeSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/EmployeeSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/YearlyPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/YearlyPlan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeSubjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeSubjectRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SubjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SubjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/YearlyPlanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/YearlyPlanRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716509144663</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="napralvjeno slanje predmeta za jendog zaposlenika">
+      <created>1716555487212</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716555487212</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,7 +167,8 @@
     <MESSAGE value="napravljen api za dohvat liste zaposlenika" />
     <MESSAGE value="napravljene osnovne funkcije za dohvat, stvaranje i brisanje" />
     <MESSAGE value="sitna popravka u create funkciji" />
-    <option name="LAST_COMMIT_MESSAGE" value="sitna popravka u create funkciji" />
+    <MESSAGE value="napralvjeno slanje predmeta za jendog zaposlenika" />
+    <option name="LAST_COMMIT_MESSAGE" value="napralvjeno slanje predmeta za jendog zaposlenika" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

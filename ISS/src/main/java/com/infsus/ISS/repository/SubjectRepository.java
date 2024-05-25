@@ -12,4 +12,6 @@ import java.util.List;
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
     @Query("SELECT s FROM Subject s JOIN EmployeeSubject es ON s.idSubject = es.subject.idSubject WHERE es.employee.idUser = :employeeId")
     List<Subject> findAllByEmployeeId(@Param("employeeId") Long employeeId);
+
+    Subject findBySubjectName(String subject);
 }

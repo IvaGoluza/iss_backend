@@ -25,9 +25,7 @@ public class Subject {
     @Column(name = "name_subject", nullable = false)
     private String subjectName;
 
-    @Column(name = "number_of_hours", nullable = false)
-    private int numberOfHours;
-
     @OneToMany(mappedBy = "subject")
     private Set<EmployeeSubject> employeeSubjects;
+
 }

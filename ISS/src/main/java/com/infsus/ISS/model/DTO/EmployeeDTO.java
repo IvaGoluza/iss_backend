@@ -15,9 +15,6 @@ import java.util.List;
 public class EmployeeDTO {
     private String name;
     private String email;
-    private String password;
     private Date dateStart;
-    private Date dateEnd;
     private String position;
-    private Long idAktiv;
 }

@@ -1,8 +1,8 @@
 package com.infsus.ISS.controller;
 
 import com.infsus.ISS.model.DTO.*;
-import com.infsus.ISS.model.Subject;
 import com.infsus.ISS.service.EmployeeService;
+import com.infsus.ISS.service.EmployeeSubjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +17,11 @@ import java.util.Optional;
 public class EmployeeController {
     private final EmployeeService employeeService;
 
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
 
     @PostMapping("/create")
     public ResponseEntity<EmployeeResponseDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
@@ -59,5 +61,6 @@ public class EmployeeController {
         List<SubjectDetailResponseDTO> subjects = employeeService.getSubjectsByEmployeeId(id);
         return ResponseEntity.ok(subjects);
     }
+
 
 }

@@ -37,6 +37,12 @@ public class EmployeeSubject {
     @JoinColumn(name = "id_yearly_plan")
     private YearlyPlan yearlyPlan;
 
+    @Column(name = "class", nullable = false)
+    private int subjectClass;
+
+    @Column(name = "number_of_hours", nullable = false)
+    private int numberOfHours;
+
     public EmployeeSubject(Employee employee, Subject subject) {
             this.employee = employee;
             this.subject = subject;

@@ -9,11 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class SubjectDetailResponseDTO {
+public class EmployeeSubjectUpdateDTO {
     private Long idEmployeeSubject;
-    private SubjectResponseDTO subject;
-    private String status;
-    private String yearlyPlan;
-    private int subjectClass;
     private int numberOfHours;
+    private String status;
+    private String subjectClass;
 }

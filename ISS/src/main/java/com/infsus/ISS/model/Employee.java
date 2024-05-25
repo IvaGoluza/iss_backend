@@ -27,5 +27,4 @@ public class Employee extends User{
     @JoinColumn(name = "id_aktiv")
     private Aktiv aktiv;
 
-
 }
