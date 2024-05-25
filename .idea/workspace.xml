@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Napravljene CRUD funkcije za detail">
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/MeetingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/MeetingResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Meeting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/MeetingEmployee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/MeetingEmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/MeetingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/AktivService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/MeetingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/AktivServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/MeetingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/AktivController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/AktivController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/SubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/EmployeeResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolDirector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/SubjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/SubjectService.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Dodana tablica meeting">
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/SubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/SubjectServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716651294248</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Dodana tablica meeting">
+      <created>1716672497474</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716672497474</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Dodana tablica meeting">
+      <created>1716672547138</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716672547138</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,7 +173,8 @@
     <MESSAGE value="sitna popravka u create funkciji" />
     <MESSAGE value="napralvjeno slanje predmeta za jendog zaposlenika" />
     <MESSAGE value="Napravljene CRUD funkcije za detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="Napravljene CRUD funkcije za detail" />
+    <MESSAGE value="Dodana tablica meeting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodana tablica meeting" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

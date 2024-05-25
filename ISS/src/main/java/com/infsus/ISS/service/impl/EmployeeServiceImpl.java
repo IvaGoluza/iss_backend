@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final ModelMapper modelMapper;
     private static final int PASSWORD_LENGTH = 8;
     private static final String PASSWORD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AktivRepository aktivRepository, SubjectRepository subjectRepository, EmployeeSubjectRepository employeeSubjectRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+        this.employeeRepository = employeeRepository;
+        this.aktivRepository = aktivRepository;
+        this.subjectRepository = subjectRepository;
+        this.employeeSubjectRepository = employeeSubjectRepository;
+        this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public List<EmployeeResponseDTO> getAllEmployees() {
