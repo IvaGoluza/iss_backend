@@ -8,22 +8,23 @@ import lombok.Setter;
 
 import java.util.Set;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "yearly_plan")
-public class YearlyPlan {
+@Table(name = "monthly_theme")
+public class MonthlyTheme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_yearly_plan")
-    private Long idYearlyPlan;
+    @Column(name = "id_monthly_theme")
+    private Long idMonthlyTheme;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "yearlyPlan", cascade = CascadeType.ALL)
-    private Set<MonthlyTheme> monthlyThemes;
+    @ManyToOne
+    @JoinColumn(name = "id_yearly_plan")
+    private YearlyPlan yearlyPlan;
+
 }

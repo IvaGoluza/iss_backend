@@ -28,4 +28,7 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private Set<EmployeeSubject> employeeSubjects;
 
+    @ManyToOne
+    @JoinColumn(name = "id_year")
+    private SchoolYear schoolYear;
 }

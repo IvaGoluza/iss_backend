@@ -38,8 +38,15 @@ public class Meeting {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organized_by", nullable = false)
-    private SchoolDirector organizedBy;
+    private Principal organizedBy;
 
     @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MeetingEmployee> meetingEmployees;
+
+    @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Record> records;
+
+    @ManyToOne
+    @JoinColumn(name = "id_year")
+    private SchoolYear schoolYear;
 }

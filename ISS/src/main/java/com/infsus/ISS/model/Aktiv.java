@@ -27,4 +27,8 @@ public class Aktiv {
 
     @ManyToMany(mappedBy = "aktiv", cascade = CascadeType.ALL)
     private List<Employee> employees;
+
+    @ManyToOne
+    @JoinColumn(name = "id_year")
+    private SchoolYear schoolYear;
 }
