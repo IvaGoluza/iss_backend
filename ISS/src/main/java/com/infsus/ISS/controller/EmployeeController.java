@@ -41,6 +41,20 @@ public class EmployeeController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
+    @GetMapping("/getNext/{id}")
+    public ResponseEntity<EmployeeWithAktivDTO> getNextEmployee(@PathVariable("id") Long currentEmployeeId) {
+        Optional<EmployeeWithAktivDTO> nextEmployee = employeeService.getNextEmployee(currentEmployeeId);
+        return nextEmployee.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.ok(null));  // Return OK with null if no next employee
+    }
+
+    @GetMapping("/getPrev/{id}")
+    public ResponseEntity<EmployeeWithAktivDTO> getPrevEmployee(@PathVariable("id") Long currentEmployeeId) {
+        Optional<EmployeeWithAktivDTO> prevEmployee = employeeService.getPrevEmployee(currentEmployeeId);
+        return prevEmployee.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.ok(null));  // Return OK with null if no previous employee
+    }
+
     @PutMapping("/update")
     public ResponseEntity<Void> updateEmployee(@RequestBody EmployeeUpdateDTO employeeUpdateDTO) {
         employeeService.updateEmployee(employeeUpdateDTO);

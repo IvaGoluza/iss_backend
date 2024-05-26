@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Popravljeno hashiranje lozinke">
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/MonthlyPlan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/MonthlyTheme.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Preparation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Record.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolYear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/TaskId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/WeeklyTheme.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Dovrsena cijela baza podataka">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Aktiv.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Aktiv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Meeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Meeting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/SchoolDirector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/YearlyPlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/YearlyPlan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SchoolDirectorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/PrincipalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716673436466</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Dovrsena cijela baza podataka">
+      <created>1716680624356</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716680624356</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +193,8 @@
     <MESSAGE value="Napravljene CRUD funkcije za detail" />
     <MESSAGE value="Dodana tablica meeting" />
     <MESSAGE value="Popravljeno hashiranje lozinke" />
-    <option name="LAST_COMMIT_MESSAGE" value="Popravljeno hashiranje lozinke" />
+    <MESSAGE value="Dovrsena cijela baza podataka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dovrsena cijela baza podataka" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

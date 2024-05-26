@@ -18,4 +18,7 @@ public interface EmployeeService {
     EmployeeResponseDTO createEmployee(EmployeeDTO employeeDTO);
 
     List<SubjectDetailResponseDTO> getSubjectsByEmployeeId(Long employeeId);
+    Optional<EmployeeWithAktivDTO> getNextEmployee(Long currentEmployeeId);
+
+    Optional<EmployeeWithAktivDTO> getPrevEmployee(Long currentEmployeeId);
 }

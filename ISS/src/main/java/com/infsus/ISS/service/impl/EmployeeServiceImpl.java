@@ -135,4 +135,24 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
+    @Override
+    public Optional<EmployeeWithAktivDTO> getNextEmployee(Long currentEmployeeId) {
+        Optional<Employee> employeeOptional = employeeRepository.findNextEmployee(currentEmployeeId);
+        if (employeeOptional.isPresent()) {
+            return getEmployeeWithAktivById(employeeOptional.get().getIdUser());
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<EmployeeWithAktivDTO> getPrevEmployee(Long currentEmployeeId) {
+        Optional<Employee> employeeOptional = employeeRepository.findPrevEmployee(currentEmployeeId);
+        if (employeeOptional.isPresent()) {
+            return getEmployeeWithAktivById(employeeOptional.get().getIdUser());
+        } else {
+            return Optional.empty();  // Return an empty Optional if no previous employee is found
+        }
+    }
+
 }
