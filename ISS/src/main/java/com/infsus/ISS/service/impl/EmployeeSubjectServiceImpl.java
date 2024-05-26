@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -93,11 +94,15 @@ public class EmployeeSubjectServiceImpl implements EmployeeSubjectService {
         responseDTO.setSubjectClass(savedEmployeeSubject.getSubjectClass());
         responseDTO.setNumberOfHours(savedEmployeeSubject.getNumberOfHours());
 
-        // Retrieve and set all status plans
+        // Retrieve and set all status plans as DTOs
         List<StatusPlan> allStatus = statusPlanRepository.findAll();
-        responseDTO.setAllStatus(allStatus);
+        List<StatusPlan> allStatusDTOs = allStatus.stream()
+                .map(status -> new StatusPlan(status.getIdStatusPlan(), status.getStatus()))
+                .collect(Collectors.toList());
+        responseDTO.setAllStatus(allStatusDTOs);
 
         return responseDTO;
     }
+
 
 }
