@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 public class SubjectDetailResponseDTO {
     private Long idEmployeeSubject;
-    private SubjectResponseDTO subject;
+    private String subjectName;
     private String status;
     private String yearlyPlan;
     private int subjectClass;

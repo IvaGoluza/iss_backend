@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Ispravljene funkcije getNext i getPrev">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_2_1_214.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/pom.xml" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Dodana slanje statusPlana kod slanja predmeta">
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716731297945</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Dodana slanje statusPlana kod slanja predmeta">
+      <created>1716733962419</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716733962419</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,7 +216,8 @@
     <MESSAGE value="Dodane funkcije getNexg i getPrev" />
     <MESSAGE value="Ispravljene funkcije getNexg i getPrev" />
     <MESSAGE value="Ispravljene funkcije getNext i getPrev" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ispravljene funkcije getNext i getPrev" />
+    <MESSAGE value="Dodana slanje statusPlana kod slanja predmeta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodana slanje statusPlana kod slanja predmeta" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

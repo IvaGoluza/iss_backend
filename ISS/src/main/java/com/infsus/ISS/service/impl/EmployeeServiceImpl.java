@@ -122,7 +122,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         for (Subject s : subjects) {
             List<EmployeeSubject> employeeSubjects = employeeSubjectRepository.findByEmployeeAndSubject(employeeId, s.getIdSubject());
             for (EmployeeSubject employeeSubject : employeeSubjects) {
-                SubjectDetailResponseDTO subjectDTO = modelMapper.map(s, SubjectDetailResponseDTO.class); // Create a new DTO for each EmployeeSubject
+                //SubjectDetailResponseDTO subjectDTO = modelMapper.map(s, SubjectDetailResponseDTO.class); // Create a new DTO for each EmployeeSubject
+                SubjectDetailResponseDTO subjectDTO = new SubjectDetailResponseDTO();
+                subjectDTO.setSubjectName(s.getSubjectName());
                 StatusPlan statusPlan = employeeSubject.getStatusPlan();
                 YearlyPlan yearlyPlan = employeeSubject.getYearlyPlan();
                 subjectDTO.setStatus(statusPlan != null ? statusPlan.getStatus() : null);
