@@ -1,13 +1,11 @@
 package com.infsus.ISS.controller;
 
+import com.infsus.ISS.model.DTO.AktivCreateDTO;
 import com.infsus.ISS.model.DTO.AktivDTO;
 import com.infsus.ISS.service.AktivService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,10 @@ public class AktivController {
     @GetMapping("/getAll")
     public ResponseEntity<List<AktivDTO>> getAllAktivs() {
         return ResponseEntity.ok(aktivService.getAllAktivs());
+    }
+    @PostMapping("/create")
+    public ResponseEntity<AktivDTO> createAktiv(@RequestBody AktivCreateDTO aktivCreateDTO) {
+        AktivDTO createdAktiv = aktivService.createAktiv(aktivCreateDTO);
+        return ResponseEntity.ok(createdAktiv);
     }
 }

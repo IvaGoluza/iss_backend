@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Napravljneni svi testovi">
-      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/StatusPlanDTO.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Popravlj create">
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/AktivCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/SchoolYearRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeSubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeSubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/AktivServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/AktivServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -208,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716754339944</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Popravlj create">
+      <created>1716755923646</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716755923646</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +249,8 @@
     <MESSAGE value="Promjena slanja stringa za naziv predmeta" />
     <MESSAGE value="Napralvjeni testovi na service-u i repostiroy-u" />
     <MESSAGE value="Napravljneni svi testovi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Napravljneni svi testovi" />
+    <MESSAGE value="Popravlj create" />
+    <option name="LAST_COMMIT_MESSAGE" value="Popravlj create" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
