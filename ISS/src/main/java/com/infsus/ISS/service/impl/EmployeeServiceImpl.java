@@ -4,7 +4,6 @@ import com.infsus.ISS.model.*;
 import com.infsus.ISS.model.DTO.*;
 import com.infsus.ISS.repository.*;
 import com.infsus.ISS.service.EmployeeService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final AktivRepository aktivRepository;
     private final SubjectRepository subjectRepository;
     private final EmployeeSubjectRepository employeeSubjectRepository;
+    private final StatusPlanRepository statusPlanRepository;
     private final ModelMapper modelMapper;
     private static final int PASSWORD_LENGTH = 8;
     private static final String PASSWORD_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -33,13 +33,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AktivRepository aktivRepository, SubjectRepository subjectRepository, EmployeeSubjectRepository employeeSubjectRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AktivRepository aktivRepository, SubjectRepository subjectRepository, EmployeeSubjectRepository employeeSubjectRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, StatusPlanRepository statusPlanRepository) {
         this.employeeRepository = employeeRepository;
         this.aktivRepository = aktivRepository;
         this.subjectRepository = subjectRepository;
         this.employeeSubjectRepository = employeeSubjectRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.statusPlanRepository = statusPlanRepository;
     }
 
     @Override
@@ -117,6 +118,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<SubjectDetailResponseDTO> getSubjectsByEmployeeId(Long employeeId) {
         List<Subject> subjects = subjectRepository.findAllByEmployeeId(employeeId);
         List<SubjectDetailResponseDTO> listToSend = new ArrayList<>();
+        List<StatusPlan> allStatus = statusPlanRepository.findAll();
         for (Subject s : subjects) {
             List<EmployeeSubject> employeeSubjects = employeeSubjectRepository.findByEmployeeAndSubject(employeeId, s.getIdSubject());
             for (EmployeeSubject employeeSubject : employeeSubjects) {
@@ -128,6 +130,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 subjectDTO.setSubjectClass(employeeSubject.getSubjectClass());
                 subjectDTO.setNumberOfHours(employeeSubject.getNumberOfHours());
                 subjectDTO.setIdEmployeeSubject(employeeSubject.getIdEmployeeSubject());
+                subjectDTO.setAllStatus(allStatus);
                 listToSend.add(subjectDTO);
             }
         }

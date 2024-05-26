@@ -1,9 +1,12 @@
 package com.infsus.ISS.model.DTO;
 
+import com.infsus.ISS.model.StatusPlan;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,4 +19,5 @@ public class SubjectDetailResponseDTO {
     private String yearlyPlan;
     private int subjectClass;
     private int numberOfHours;
+    private List<StatusPlan> allStatus;
 }
