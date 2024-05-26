@@ -2,6 +2,7 @@ package com.infsus.ISS.service;
 
 import com.infsus.ISS.model.DTO.EmployeeSubjectDTO;
 import com.infsus.ISS.model.DTO.EmployeeSubjectUpdateDTO;
+import com.infsus.ISS.model.DTO.SubjectDetailResponseDTO;
 import com.infsus.ISS.model.EmployeeSubject;
 
 public interface EmployeeSubjectService {
@@ -10,5 +11,5 @@ public interface EmployeeSubjectService {
 
     void updateEmployeeSubject(EmployeeSubjectUpdateDTO employeeSubjectUpdateDTO);
 
-    EmployeeSubject createEmployeeSubject(EmployeeSubjectDTO employeeSubjectDTO);
+    SubjectDetailResponseDTO createEmployeeSubject(EmployeeSubjectDTO employeeSubjectDTO);
 }

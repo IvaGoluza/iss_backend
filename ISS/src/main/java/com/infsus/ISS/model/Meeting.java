@@ -44,7 +44,7 @@ public class Meeting {
     private Set<MeetingEmployee> meetingEmployees;
 
     @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Record> records;
+    private Set<MeetingRecord> records;
 
     @ManyToOne
     @JoinColumn(name = "id_year")

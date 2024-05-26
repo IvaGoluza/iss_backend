@@ -4,6 +4,7 @@ import com.infsus.ISS.model.*;
 import com.infsus.ISS.model.DTO.EmployeeResponseDTO;
 import com.infsus.ISS.model.DTO.EmployeeSubjectDTO;
 import com.infsus.ISS.model.DTO.EmployeeSubjectUpdateDTO;
+import com.infsus.ISS.model.DTO.SubjectDetailResponseDTO;
 import com.infsus.ISS.repository.*;
 import com.infsus.ISS.service.EmployeeSubjectService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -59,17 +61,43 @@ public class EmployeeSubjectServiceImpl implements EmployeeSubjectService {
     }
 
     @Override
-    public EmployeeSubject createEmployeeSubject(EmployeeSubjectDTO employeeSubjectDTO) {
+    public SubjectDetailResponseDTO createEmployeeSubject(EmployeeSubjectDTO employeeSubjectDTO) {
+        // Create a new EmployeeSubject entity
         EmployeeSubject employeeSubject = new EmployeeSubject();
+
+        // Set the status plan
         StatusPlan statusPlan = statusPlanRepository.getReferenceById(1L);
-        Subject subject = subjectRepository.findBySubjectName(employeeSubjectDTO.getSubjectName());
         employeeSubject.setStatusPlan(statusPlan);
+
+        // Find the subject by name
+        Subject subject = subjectRepository.findBySubjectName(employeeSubjectDTO.getSubjectName());
         employeeSubject.setSubject(subject);
+
+        // Set the employee reference
         Employee employee = employeeRepository.getReferenceById(employeeSubjectDTO.getIdUser());
         employeeSubject.setEmployee(employee);
+
+        // Set additional fields
         employeeSubject.setNumberOfHours(employeeSubjectDTO.getNumberOfHours());
         employeeSubject.setSubjectClass(employeeSubjectDTO.getSubjectClass());
+
+        // Save the EmployeeSubject entity
         EmployeeSubject savedEmployeeSubject = employeeSubjectRepository.save(employeeSubject);
-        return savedEmployeeSubject;
+
+        // Create and return the SubjectDetailResponseDTO
+        SubjectDetailResponseDTO responseDTO = new SubjectDetailResponseDTO();
+        responseDTO.setIdEmployeeSubject(savedEmployeeSubject.getIdEmployeeSubject());
+        responseDTO.setSubjectName(savedEmployeeSubject.getSubject().getSubjectName());
+        responseDTO.setStatus(savedEmployeeSubject.getStatusPlan().getStatus());
+        responseDTO.setYearlyPlan(savedEmployeeSubject.getYearlyPlan() != null ? savedEmployeeSubject.getYearlyPlan().getName() : null);
+        responseDTO.setSubjectClass(savedEmployeeSubject.getSubjectClass());
+        responseDTO.setNumberOfHours(savedEmployeeSubject.getNumberOfHours());
+
+        // Retrieve and set all status plans
+        List<StatusPlan> allStatus = statusPlanRepository.findAll();
+        responseDTO.setAllStatus(allStatus);
+
+        return responseDTO;
     }
+
 }

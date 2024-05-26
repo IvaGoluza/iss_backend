@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Promjena slanja stringa za naziv predmeta">
-      <change afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/Service/EmployeeServiceTests.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Napralvjeni testovi na service-u i repostiroy-u">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_6_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/repository/MeetingRecordRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/controller/EmployeeControllerIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Meeting.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Meeting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/MeetingRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/controller/EmployeeControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/controller/EmployeeControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716734384015</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Napralvjeni testovi na service-u i repostiroy-u">
+      <created>1716748705919</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716748705919</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,7 +240,8 @@
     <MESSAGE value="Ispravljene funkcije getNext i getPrev" />
     <MESSAGE value="Dodana slanje statusPlana kod slanja predmeta" />
     <MESSAGE value="Promjena slanja stringa za naziv predmeta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Promjena slanja stringa za naziv predmeta" />
+    <MESSAGE value="Napralvjeni testovi na service-u i repostiroy-u" />
+    <option name="LAST_COMMIT_MESSAGE" value="Napralvjeni testovi na service-u i repostiroy-u" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

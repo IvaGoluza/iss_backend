@@ -11,7 +11,7 @@ public interface EmployeeService {
 
     Optional<EmployeeWithAktivDTO> getEmployeeWithAktivById(Long employeeId);
 
-    void updateEmployee(EmployeeUpdateDTO employeeUpdateDTO);
+    EmployeeResponseDTO updateEmployee(EmployeeUpdateDTO employeeUpdateDTO);
 
     boolean deleteEmployee(Long idUser);
 

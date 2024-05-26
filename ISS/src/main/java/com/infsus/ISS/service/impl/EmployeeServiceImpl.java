@@ -68,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(EmployeeUpdateDTO employeeUpdateDTO) {
+    public EmployeeResponseDTO updateEmployee(EmployeeUpdateDTO employeeUpdateDTO) {
         Employee employee = employeeRepository.findById(employeeUpdateDTO.getIdUser())
                 .orElseThrow(() -> new IllegalArgumentException("Employee not found"));
 
@@ -80,6 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.setAktiv(aktiv);
         }
         employeeRepository.save(employee);
+        return null;
     }
 
     @Override

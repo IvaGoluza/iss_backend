@@ -52,13 +52,13 @@ public class EmployeeController {
     public ResponseEntity<EmployeeWithAktivDTO> getPrevEmployee(@PathVariable("id") Long currentEmployeeId) {
         Optional<EmployeeWithAktivDTO> prevEmployee = employeeService.getPrevEmployee(currentEmployeeId);
         return prevEmployee.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.ok(null));  // Return OK with null if no previous employee
+                .orElseGet(() -> ResponseEntity.ok(null));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> updateEmployee(@RequestBody EmployeeUpdateDTO employeeUpdateDTO) {
-        employeeService.updateEmployee(employeeUpdateDTO);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<EmployeeResponseDTO> updateEmployee(@RequestBody EmployeeUpdateDTO employeeUpdateDTO) {
+        EmployeeResponseDTO updatedEmployee = employeeService.updateEmployee(employeeUpdateDTO);
+        return  ResponseEntity.ok(updatedEmployee);
     }
 
     @DeleteMapping("/delete/{id}")

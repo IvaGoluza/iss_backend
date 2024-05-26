@@ -1,198 +1,258 @@
 package com.infsus.ISS.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.infsus.ISS.model.DTO.*;
+import com.infsus.ISS.model.StatusPlan;
 import com.infsus.ISS.service.EmployeeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.mockito.ArgumentMatchers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.doNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(MockitoExtension.class)
+@WebMvcTest(EmployeeController.class)
 public class EmployeeControllerTests {
 
-    @Mock
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
     private EmployeeService employeeService;
 
-    @InjectMocks
-    private EmployeeController employeeController;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private EmployeeDTO employeeDTO;
     private EmployeeResponseDTO employeeResponseDTO;
     private EmployeeWithAktivDTO employeeWithAktivDTO;
     private EmployeeUpdateDTO employeeUpdateDTO;
-    private List<EmployeeResponseDTO> employeeList;
-    private List<SubjectDetailResponseDTO> subjectList;
 
     @BeforeEach
     public void setUp() {
-        employeeDTO = new EmployeeDTO("John Doe", "john.doe@example.com", new Date(), "Teacher");
-        employeeResponseDTO = new EmployeeResponseDTO(1L, "John Doe", "john.doe@example.com", null, new Date(), "Teacher", "Aktiv 1");
+        employeeDTO = new EmployeeDTO("Marta Martić", "marta@example.com", new Date(), "Učitelj");
+        employeeResponseDTO = new EmployeeResponseDTO(1L, "Marta Martić", "marta@example.com", null, new Date(), "Učitelj", "Aktiv 1");
 
-        employeeWithAktivDTO = new EmployeeWithAktivDTO(employeeResponseDTO, new ArrayList<>());
+        employeeWithAktivDTO = new EmployeeWithAktivDTO(employeeResponseDTO, Arrays.asList(new AktivDTO(1L, "Aktiv 1")));
         employeeUpdateDTO = new EmployeeUpdateDTO();
         employeeUpdateDTO.setIdUser(1L);
-        employeeUpdateDTO.setName("Updated Name");
-        employeeUpdateDTO.setEmail("updated@example.com");
+        employeeUpdateDTO.setName("Martica Martić");
+        employeeUpdateDTO.setEmail("marta123@example.com");
         employeeUpdateDTO.setDateStart(new Date());
-        employeeUpdateDTO.setPosition("Updated Position");
-
-        employeeList = new ArrayList<>();
-        employeeList.add(employeeResponseDTO);
-
-        subjectList = new ArrayList<>();
-        subjectList.add(new SubjectDetailResponseDTO(1L, "Mathematics", "Pending", "2024 Plan", 1, 5, new ArrayList<>()));
+        employeeUpdateDTO.setPosition("Učitelj");
     }
 
     @Test
-    public void testCreateEmployee() {
-        when(employeeService.createEmployee(employeeDTO)).thenReturn(employeeResponseDTO);
+    @WithMockUser
+    public void testCreateEmployee() throws Exception {
+        given(employeeService.createEmployee(ArgumentMatchers.any(EmployeeDTO.class))).willReturn(employeeResponseDTO);
 
-        ResponseEntity<EmployeeResponseDTO> response = employeeController.createEmployee(employeeDTO);
+        ResultActions response = mockMvc.perform(post("/employee/create")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(employeeDTO))
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(employeeResponseDTO, response.getBody());
-
-        verify(employeeService, times(1)).createEmployee(employeeDTO);
+        response.andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is("Marta Martić")))
+                .andExpect(jsonPath("$.email", is("marta@example.com")))
+                .andExpect(jsonPath("$.position", is("Učitelj")));
     }
 
     @Test
-    public void testGetAllEmployees() {
-        when(employeeService.getAllEmployees()).thenReturn(employeeList);
+    @WithMockUser
+    public void testGetAllEmployees() throws Exception {
+        List<EmployeeResponseDTO> employeeList = Arrays.asList(employeeResponseDTO);
 
-        ResponseEntity<List<EmployeeResponseDTO>> response = employeeController.getAllEmployees();
+        given(employeeService.getAllEmployees()).willReturn(employeeList);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(employeeList, response.getBody());
+        ResultActions response = mockMvc.perform(get("/employee/getAll")
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        verify(employeeService, times(1)).getAllEmployees();
+        response.andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id", is(1)))
+                .andExpect(jsonPath("$[0].name", is("Marta Martić")))
+                .andExpect(jsonPath("$[0].email", is("marta@example.com")))
+                .andExpect(jsonPath("$[0].position", is("Učitelj")));
     }
 
     @Test
-    public void testGetEmployeeById_Found() {
-        when(employeeService.getEmployeeWithAktivById(1L)).thenReturn(Optional.of(employeeWithAktivDTO));
+    @WithMockUser
+    public void testGetEmployeeById_Found() throws Exception {
+        given(employeeService.getEmployeeWithAktivById(1L)).willReturn(Optional.of(employeeWithAktivDTO));
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getEmployeeById(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getEmployee/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(employeeWithAktivDTO, response.getBody());
-
-        verify(employeeService, times(1)).getEmployeeWithAktivById(1L);
+        response.andExpect(status().isOk())
+                .andExpect(jsonPath("$.employee.id", is(1)))
+                .andExpect(jsonPath("$.employee.name", is("Marta Martić")))
+                .andExpect(jsonPath("$.employee.email", is("marta@example.com")))
+                .andExpect(jsonPath("$.employee.position", is("Učitelj")))
+                .andExpect(jsonPath("$.employee.aktivName", is("Aktiv 1")))
+                .andExpect(jsonPath("$.aktivList[0].idAktiv", is(1)))  // Corrected JSON path for aktivList
+                .andExpect(jsonPath("$.aktivList[0].aktivName", is("Aktiv 1")));  // Corrected JSON path for aktivList
     }
 
     @Test
-    public void testGetEmployeeById_NotFound() {
-        when(employeeService.getEmployeeWithAktivById(1L)).thenReturn(Optional.empty());
+    @WithMockUser
+    public void testGetEmployeeById_NotFound() throws Exception {
+        given(employeeService.getEmployeeWithAktivById(1L)).willReturn(Optional.empty());
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getEmployeeById(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getEmployee/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals(null, response.getBody());
-
-        verify(employeeService, times(1)).getEmployeeWithAktivById(1L);
+        response.andExpect(status().isNotFound());
     }
 
     @Test
-    public void testGetNextEmployee_Found() {
-        when(employeeService.getNextEmployee(1L)).thenReturn(Optional.of(employeeWithAktivDTO));
+    @WithMockUser
+    public void testGetNextEmployee_Found() throws Exception {
+        given(employeeService.getNextEmployee(1L)).willReturn(Optional.of(employeeWithAktivDTO));
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getNextEmployee(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getNext/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(employeeWithAktivDTO, response.getBody());
-
-        verify(employeeService, times(1)).getNextEmployee(1L);
+        response.andExpect(status().isOk())
+                .andExpect(jsonPath("$.employee.id", is(1)))
+                .andExpect(jsonPath("$.employee.name", is("Marta Martić")))
+                .andExpect(jsonPath("$.employee.email", is("marta@example.com")))
+                .andExpect(jsonPath("$.employee.position", is("Učitelj")))
+                .andExpect(jsonPath("$.employee.aktivName", is("Aktiv 1")))
+                .andExpect(jsonPath("$.aktivList[0].idAktiv", is(1)))
+                .andExpect(jsonPath("$.aktivList[0].aktivName", is("Aktiv 1")));
     }
 
     @Test
-    public void testGetNextEmployee_NotFound() {
-        when(employeeService.getNextEmployee(1L)).thenReturn(Optional.empty());
+    @WithMockUser
+    public void testGetNextEmployee_NotFound() throws Exception {
+        given(employeeService.getNextEmployee(1L)).willReturn(Optional.empty());
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getNextEmployee(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getNext/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(null, response.getBody());
-
-        verify(employeeService, times(1)).getNextEmployee(1L);
+        response.andExpect(status().isOk())
+                .andExpect(content().string(""));
     }
 
     @Test
-    public void testGetPrevEmployee_Found() {
-        when(employeeService.getPrevEmployee(1L)).thenReturn(Optional.of(employeeWithAktivDTO));
+    @WithMockUser
+    public void testGetPrevEmployee_Found() throws Exception {
+        given(employeeService.getPrevEmployee(1L)).willReturn(Optional.of(employeeWithAktivDTO));
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getPrevEmployee(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getPrev/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(employeeWithAktivDTO, response.getBody());
-
-        verify(employeeService, times(1)).getPrevEmployee(1L);
+        response.andExpect(status().isOk())
+                .andExpect(jsonPath("$.employee.id", is(1)))
+                .andExpect(jsonPath("$.employee.name", is("Marta Martić")))
+                .andExpect(jsonPath("$.employee.email", is("marta@example.com")))
+                .andExpect(jsonPath("$.employee.position", is("Učitelj")))
+                .andExpect(jsonPath("$.employee.aktivName", is("Aktiv 1")))
+                .andExpect(jsonPath("$.aktivList[0].idAktiv", is(1)))
+                .andExpect(jsonPath("$.aktivList[0].aktivName", is("Aktiv 1")));
     }
 
     @Test
-    public void testGetPrevEmployee_NotFound() {
-        when(employeeService.getPrevEmployee(1L)).thenReturn(Optional.empty());
+    @WithMockUser
+    public void testGetPrevEmployee_NotFound() throws Exception {
+        given(employeeService.getPrevEmployee(1L)).willReturn(Optional.empty());
 
-        ResponseEntity<EmployeeWithAktivDTO> response = employeeController.getPrevEmployee(1L);
+        ResultActions response = mockMvc.perform(get("/employee/getPrev/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(null, response.getBody());
-
-        verify(employeeService, times(1)).getPrevEmployee(1L);
+        response.andExpect(status().isOk())
+                .andExpect(content().string(""));
     }
 
     @Test
-    public void testUpdateEmployee() {
-        doNothing().when(employeeService).updateEmployee(employeeUpdateDTO);
+    @WithMockUser
+    public void testUpdateEmployee() throws Exception {
+        doNothing().when(employeeService).updateEmployee(ArgumentMatchers.any(EmployeeUpdateDTO.class));
 
-        ResponseEntity<Void> response = employeeController.updateEmployee(employeeUpdateDTO);
+        ResultActions response = mockMvc.perform(put("/employee/update")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(employeeUpdateDTO))
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-
-        verify(employeeService, times(1)).updateEmployee(employeeUpdateDTO);
+        response.andExpect(status().isOk());
     }
 
     @Test
-    public void testDeleteEmployee_Found() {
-        when(employeeService.deleteEmployee(1L)).thenReturn(true);
+    @WithMockUser
+    public void testDeleteEmployee_Found() throws Exception {
+        given(employeeService.deleteEmployee(1L)).willReturn(true);
 
-        ResponseEntity<Void> response = employeeController.deleteEmployee(1L);
+        ResultActions response = mockMvc.perform(delete("/employee/delete/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-
-        verify(employeeService, times(1)).deleteEmployee(1L);
+        response.andExpect(status().isNoContent());
     }
 
     @Test
-    public void testDeleteEmployee_NotFound() {
-        when(employeeService.deleteEmployee(1L)).thenReturn(false);
+    @WithMockUser
+    public void testDeleteEmployee_NotFound() throws Exception {
+        given(employeeService.deleteEmployee(1L)).willReturn(false);
 
-        ResponseEntity<Void> response = employeeController.deleteEmployee(1L);
+        ResultActions response = mockMvc.perform(delete("/employee/delete/{id}", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
 
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-
-        verify(employeeService, times(1)).deleteEmployee(1L);
+        response.andExpect(status().isNotFound());
     }
 
     @Test
-    public void testGetSubjectsByEmployeeId() {
-        when(employeeService.getSubjectsByEmployeeId(1L)).thenReturn(subjectList);
+    @WithMockUser
+    public void testGetSubjectsByEmployeeId() throws Exception {
+        List<StatusPlan> allStatus = Arrays.asList(
+                new StatusPlan(1L, "Čeka se"),
+                new StatusPlan(2L, "Odbijeno"),
+                new StatusPlan(3L, "Prihvaćeno")
+        );
 
-        ResponseEntity<List<SubjectDetailResponseDTO>> response = employeeController.getSubjectsByEmployeeId(1L);
+        List<SubjectDetailResponseDTO> subjectList = Arrays.asList(
+                new SubjectDetailResponseDTO(1L, "Matematika", "Čeka se", "2024 Plan", 1, 5, allStatus)
+        );
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(subjectList, response.getBody());
+        given(employeeService.getSubjectsByEmployeeId(1L)).willReturn(subjectList);
 
-        verify(employeeService, times(1)).getSubjectsByEmployeeId(1L);
+        ResultActions response = mockMvc.perform(get("/employee/{id}/subjects", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()));
+        response.andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].idEmployeeSubject", is(1)))
+                .andExpect(jsonPath("$[0].subjectName", is("Matematika")))
+                .andExpect(jsonPath("$[0].status", is("Čeka se")))
+                .andExpect(jsonPath("$[0].yearlyPlan", is("2024 Plan")))
+                .andExpect(jsonPath("$[0].subjectClass", is(1)))
+                .andExpect(jsonPath("$[0].numberOfHours", is(5)))
+                .andExpect(jsonPath("$[0].allStatus[0].status", is("Čeka se")))
+                .andExpect(jsonPath("$[0].allStatus[1].idStatusPlan", is(2)))
+                .andExpect(jsonPath("$[0].allStatus[1].status", is("Odbijeno")));
     }
+
 }

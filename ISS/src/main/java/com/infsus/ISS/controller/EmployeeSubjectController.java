@@ -22,8 +22,8 @@ public class EmployeeSubjectController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<EmployeeSubject> createEmployee(@RequestBody EmployeeSubjectDTO employeeSubjectDTO) {
-        EmployeeSubject createdEmployeeSubject = employeeSubjectService.createEmployeeSubject(employeeSubjectDTO);
+    public ResponseEntity<SubjectDetailResponseDTO> createEmployee(@RequestBody EmployeeSubjectDTO employeeSubjectDTO) {
+        SubjectDetailResponseDTO createdEmployeeSubject = employeeSubjectService.createEmployeeSubject(employeeSubjectDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployeeSubject);
     }
 
