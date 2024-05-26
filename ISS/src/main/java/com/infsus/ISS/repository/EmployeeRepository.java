@@ -11,9 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    @Query("SELECT e FROM Employee e WHERE e.id > :currentEmployeeId ORDER BY e.id ASC")
+    @Query("SELECT e FROM Employee e WHERE e.id > :currentEmployeeId ORDER BY e.id ASC LIMIT 1")
     Optional<Employee> findNextEmployee(@Param("currentEmployeeId") Long currentEmployeeId);
 
-    @Query("SELECT e FROM Employee e WHERE e.id < :currentEmployeeId ORDER BY e.id DESC")
+    @Query("SELECT e FROM Employee e WHERE e.id < :currentEmployeeId ORDER BY e.id DESC LIMIT 1")
     Optional<Employee> findPrevEmployee(@Param("currentEmployeeId") Long currentEmployeeId);
 }
