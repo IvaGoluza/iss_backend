@@ -34,13 +34,13 @@ public class EmployeeSubjectController {
     }
 
     @DeleteMapping("/delete/{idEmployeeSubject}")
-    public ResponseEntity<String> deleteEmployeeSubject(
+    public ResponseEntity<Void> deleteEmployeeSubject(
             @PathVariable Long idEmployeeSubject) {
         try {
             employeeSubjectService.deleteEmployeeSubject(idEmployeeSubject);
-            return ResponseEntity.ok("EmployeeSubject deleted successfully");
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete EmployeeSubject: " + e.getMessage());
+            return ResponseEntity.internalServerError().build();
         }
     }
 }

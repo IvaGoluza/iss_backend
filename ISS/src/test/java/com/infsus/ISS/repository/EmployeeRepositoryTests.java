@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Date;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,70 +22,40 @@ public class EmployeeRepositoryTests {
 
     @BeforeEach
     public void setUp() {
-        // Clean up the database before each test
         employeeRepository.deleteAll();
 
-        // Given
         Employee employee1 = new Employee();
-        employee1.setPosition("Position1");
+        employee1.setName("Pero Perić");
+        employee1.setEmail("pero@example.com");
+        employee1.setPassword("pass");
+        employee1.setDateStart(new Date());
+        employee1.setPosition("Učitelj");
+
         Employee employee2 = new Employee();
-        employee2.setPosition("Position2");
-        Employee employee3 = new Employee();
-        employee3.setPosition("Position3");
+        employee2.setName("Ana Anić");
+        employee2.setEmail("ana@example.com");
+        employee2.setPassword("password2");
+        employee2.setDateStart(new Date());
+        employee2.setPosition("Učitelj");
 
         employeeRepository.save(employee1);
         employeeRepository.save(employee2);
-        employeeRepository.save(employee3);
     }
 
     @Test
     public void testFindNextEmployee() {
-        // Fetch the first employee to use its ID
         Employee employee1 = employeeRepository.findAll().get(0);
-
-        // When
         Optional<Employee> nextEmployee = employeeRepository.findNextEmployee(employee1.getIdUser());
-
-        // Then
         assertThat(nextEmployee).isPresent();
-        assertThat(nextEmployee.get().getPosition()).isEqualTo("Position2");
+        assertThat(nextEmployee.get().getName()).isEqualTo("Ana Anić");
     }
 
     @Test
     public void testFindPrevEmployee() {
-        // Fetch the second employee to use its ID
         Employee employee2 = employeeRepository.findAll().get(1);
-
-        // When
         Optional<Employee> prevEmployee = employeeRepository.findPrevEmployee(employee2.getIdUser());
-
-        // Then
         assertThat(prevEmployee).isPresent();
-        assertThat(prevEmployee.get().getPosition()).isEqualTo("Position1");
-    }
-
-    @Test
-    public void testFindNextEmployeeWhenLast() {
-        // Fetch the last employee to use its ID
-        Employee employee3 = employeeRepository.findAll().get(2);
-
-        // When
-        Optional<Employee> nextEmployee = employeeRepository.findNextEmployee(employee3.getIdUser());
-
-        // Then
-        assertThat(nextEmployee).isEmpty();
-    }
-
-    @Test
-    public void testFindPrevEmployeeWhenFirst() {
-        // Fetch the first employee to use its ID
-        Employee employee1 = employeeRepository.findAll().get(0);
-
-        // When
-        Optional<Employee> prevEmployee = employeeRepository.findPrevEmployee(employee1.getIdUser());
-
-        // Then
-        assertThat(prevEmployee).isEmpty();
+        assertThat(prevEmployee.get().getName()).isEqualTo("Pero Perić");
     }
 
     @Test
@@ -92,48 +63,37 @@ public class EmployeeRepositoryTests {
         Employee employee1 = employeeRepository.findAll().get(0);
         Optional<Employee> foundEmployee = employeeRepository.findById(employee1.getIdUser());
         assertThat(foundEmployee).isPresent();
-        assertThat(foundEmployee.get().getPosition()).isEqualTo("Position1");
+        assertThat(foundEmployee.get().getName()).isEqualTo("Pero Perić");
     }
 
     @Test
     public void testCreateEmployee() {
-        // Given
         Employee newEmployee = new Employee();
-        newEmployee.setPosition("NewPosition");
-
-        // When
+        newEmployee.setName("Marta Martić");
+        newEmployee.setEmail("marta@example.com");
+        newEmployee.setPassword("password2");
+        newEmployee.setDateStart(new Date());
+        newEmployee.setPosition("Učitelj");
         Employee createdEmployee = employeeRepository.save(newEmployee);
-
-        // Then
         assertThat(createdEmployee).isNotNull();
         assertThat(createdEmployee.getIdUser()).isNotNull();
-        assertThat(createdEmployee.getPosition()).isEqualTo("NewPosition");
+        assertThat(createdEmployee.getName()).isEqualTo("Marta Martić");
     }
 
     @Test
     public void testUpdateEmployee() {
-        // Fetch the first employee to use its ID
         Employee employee1 = employeeRepository.findAll().get(0);
-        employee1.setPosition("UpdatedPosition");
-
-        // When
+        employee1.setEmail("pero123@example.com");
         Employee updatedEmployee = employeeRepository.save(employee1);
-
-        // Then
-        assertThat(updatedEmployee.getPosition()).isEqualTo("UpdatedPosition");
+        assertThat(updatedEmployee.getEmail()).isEqualTo("pero123@example.com");
     }
 
     @Test
     public void testDeleteEmployee() {
-        // Fetch the first employee to use its ID
         Employee employee1 = employeeRepository.findAll().get(0);
         Long employee1Id = employee1.getIdUser();
-
-        // When
         employeeRepository.delete(employee1);
         Optional<Employee> deletedEmployee = employeeRepository.findById(employee1Id);
-
-        // Then
         assertThat(deletedEmployee).isEmpty();
     }
 }

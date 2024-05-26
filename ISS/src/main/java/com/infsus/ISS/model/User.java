@@ -33,6 +33,4 @@ public class User {
 
     @Column(name = "date_start", nullable = false)
     private Date dateStart;
-
-
 }

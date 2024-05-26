@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Dodana slanje statusPlana kod slanja predmeta">
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/DTO/SubjectDetailResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+    <list default="true" id="96da39e3-a14b-4d5d-9642-1b835a35c61e" name="Changes" comment="Promjena slanja stringa za naziv predmeta">
+      <change afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/Service/EmployeeServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/main/java/com/infsus/ISS/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ISS/src/test/java/com/infsus/ISS/repository/EmployeeRepositoryTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716733962419</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Promjena slanja stringa za naziv predmeta">
+      <created>1716734384015</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716734384015</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -217,7 +225,8 @@
     <MESSAGE value="Ispravljene funkcije getNexg i getPrev" />
     <MESSAGE value="Ispravljene funkcije getNext i getPrev" />
     <MESSAGE value="Dodana slanje statusPlana kod slanja predmeta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodana slanje statusPlana kod slanja predmeta" />
+    <MESSAGE value="Promjena slanja stringa za naziv predmeta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Promjena slanja stringa za naziv predmeta" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
